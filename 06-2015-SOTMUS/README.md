@@ -1,6 +1,6 @@
 # State of the Map US 2015
 
-## [Extracting interesting data from OSM](mapzen/presentations/06-2015-SOTMUS/ExtractingInterestingThingsWorkshop-Indy-Diana.pdf)
+## [Extracting interesting data from OSM](https://github.com/dianashk/presentations/blob/master/06-2015-SOTMUS/ExtractingInterestingThingsWorkshop-Indy-Diana.pdf)
 #### Diana Shkolnikov and Indy Hurt
 
 OSM data is HUGE! Its vastness presents a significant challenge to anyone wanting to extract a meaningful subset of the data. The challenges this presents are twofold. First, how does one figure out what OSM contains that might be of interest. Second, how does one go about extracting that awesome, meaningful, super important data.
