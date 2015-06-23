@@ -25,3 +25,25 @@ OSM data is HUGE! Its vastness presents a significant challenge to anyone wantin
 This workshop will walk participants through browsing OSM data using taginfo to identify potentially interesting items. Once a meaningful subset of the data has been targeted, the focus will switch to extracting that data. Various available tools will be examined, such as osmfilter, osmium, fences, etc. The group will perform a simple polygon extraction using fences, which is an administrative boundary extraction tool for OSM.
 
 Finally, the participants will work on a simple visualization of the shiny new extracted data. Participants should walk away with a good grasp on some simple and powerful tools for working with OSM data to create and visualize their own custom datasets.
+
+## [Peripheral Data in OpenStreetMap](PeripheralDataInOpenStreetMap.pdf)
+
+#### panel moderated by Drew Dara-Abrams
+
+OpenStreetMap is a giant datastore, with an extremely flexible data model. Its API accepts all additions. But, in fact, not everything belongs or fits in OpenStreetMap.
+
+Some thematic data require more advanced modeling than OpenStreetMap’s simple tagging scheme supports. To represent a building in full 3D requires a data model that supports solids, and to represent a public transit network or traffic patterns requires a data model that handles space and time.
+
+Other types of data come from authoritative sources and may require cleaning, combining, and perhaps even legal review before they’re ready to be added to OpenStreetMap. For example, street addresses and trailheads.
+
+Just as not every kind of data can fit into OpenStreetMap, not every kind of data can easily be extracted from OpenStreetMap. Storing data outside of OpenStreetMap proper may also make that data more relevant to other users’ needs. For example, supporting data consumption in mobile apps, or supporting data collection with topic specific editor apps.
+
+We’ll discuss peripheral data to OSM, both in terms of technical implementation and in terms of community impacts. If done well, data projects that are connected but not subsumed by OSM can advance open geo data. Let’s figure out together how that’s best done.
+
+Panelists:
+
+- Ian Dees, [OpenAddresses](http://openaddresses.io/)
+- Jan Erik Solem, [Mapillary](http://www.mapillary.com/)
+- Jereme Monteau, [OpenTrails](http://www.opentraildata.org/)
+- Drew Dara Abrams, [Transitland](https://transit.land)
+- Diana Shkolnikov, [Borders](https://mapzen.com/data/borders)
