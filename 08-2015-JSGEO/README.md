@@ -4,11 +4,11 @@
 #### Patricio Gonzalez Vivo
 #####Thursday 8, ??:?? PM - 15’ Talks
 
-Hello I’m going to speak about how we procedural generated maps from OpenStreetMaps data.
+Hello. Today I’m going to speak about how we procedurally draw maps from OpenStreetMaps data.
 
-My name is Patricio Gonzalez Vivo, I’m a new media artist working on the Graphic Engineering team of Mapzen, developing Tangram.
+My name is Patricio Gonzalez Vivo, I’m a new media artist working on the Graphic Engineering team of Mapzen.
 
-Tangram is our 2D/3D map rendering engine that works on WebGL (on the web) and (openGL ES for native apps). We use all the power of the graphics card to render beautiful maps on the fly from vector tile from OpenStreetMap data.
+One of our tools is call Tangram. A 2D/3D map rendering engine that works on WebGL (on the web) and (openGL ES for native apps). On it we use all the power of the graphics card to render beautiful maps from vector tile from OpenStreetMap data.
 
 As an artist I’m one of the responsable of some of the graphics features that this engine supports, like the poly-lines tessellation, materials and lights systems. Materials? lights? Yes, our engine feeds from other inter disciplinary concepts to give more expressive resources. In this case some of the state of the art techniques of the computer graphics world.
 
@@ -20,24 +20,72 @@ Go to <http://tangrams.github.io/tangram-sandbox/>
 
 - [From elegant](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/press#3.82729/20.73/-26.25) [to playfull](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/lego#19/40.70533/-74.00975)
 
-
 - [From design](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/patterns#17.375/40.70361/-74.01181) [to architectural](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/blueprint#16.575/40.70321/-74.00666)
 
 Or if you like the movies:
 
 -  [From tron](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/tron#16.975/40.70411/-74.00930) [to the matrix](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/matrix#18.4/40.71310/-74.00599)
 
+You can really see the plasticity and flexibility of our engine.
+
 How this technology works? Let me show you [one of the tools I’m working together with Lou](http://tangrams.github.io/tangram-play/). Hopefully this will show some of the behind the scenes of this Tangram Maps.
 
 This is TangramPlay, our online editing tool for tangram. Here on the right you can see the ```.yaml``` file Tangram use to construct the map.
 
-- Here is the ***```source```*** of the data
-- The ***```layers```*** to parse from that data
-- And here parameters of how to ***```style```*** this layers.
+```yaml
+sources:
+    osm:
+        type: TopoJSON
+        url:  //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson
+layers:
+    water:
+        data: { source: osm }
+        draw:
+            polygons:
+                order: 2
+                color: ‘#353535’
+    earth:
+        data: { source: osm }
+        draw:
+            polygons:
+                order: 0
+                color: ‘#555’
+    landuse:
+        data: { source: osm }
+        draw:
+            polygons:
+                order: 1
+                color: ‘#666’
+    roads:
+        data: { source: osm }
+        properties: { width: 3 }
+        draw:
+            lines:
+                order: 2
+                color: ‘#777’
+                width: 5
+    buildings:
+        data: { source: osm }
+        draw:
+            polygons:
+                order: 50
+                color: ‘#999’
+        extruded:
+            draw:
+                polygons:
+                    style: buildings
+                    extrude: function () { return feature.height > 0 || $zoom >= 16; }
+```
+
+- [Here](http://tangrams.github.io/tangram-play/?lines=1-4) is the ***```source```*** of the data
+
+- [Here](http://tangrams.github.io/tangram-play/?lines=22-77) the ***```layers```*** to parse from that data
+
+- Then [here](http://tangrams.github.io/tangram-play/?lines=15-21) we can define customs ***```styles```*** for this layers.
  
 So far up to here, I think looks pretty much as any other template system to raster maps. Right? Here is where start getting interesting. The next properties are more proper from a 3D engine.
 
-- define the ***```camera```***
+- define the [***```camera```***](http://tangrams.github.io/tangram-play/?lines=5-8)
 
 ```yaml
 cameras:
@@ -48,7 +96,7 @@ cameras:
 
 (Change ```camera/perspective/type``` to ```isometric```) 
 
-- the ***```lights```*** of the scene
+- the [***```lights```***](http://tangrams.github.io/tangram-play/?lines=9-14) of the scene
 
 ```yaml
 lights:
@@ -64,7 +112,7 @@ lights:
 But’s this is not the most flexible feature of tangram, language is. Tangram let’s you inject peaces of code into your styles to hijack the main rendering pipe (in real-time). This is done by using ***injections points*** to the shader of each style. ***Language*** is human most versatile tool, let’s us imagine things, define them and share them.
 Is through computer graphics languages (in this case GLSL) that the user can change the ***```position```***, ***```width```***, orientation (aka ***```normals```***) and pre-lightening ***```color```*** or post-lightening color (know as ***```filter```***) of anything render in Tangram Maps.
 
-For example let’s se here (back to the default tangramPlay style), buildings have a custom style.
+For example let’s se [here](http://tangrams.github.io/tangram-play/?lines=15-21), buildings have a custom style.
 
 ```yaml
 styles:
