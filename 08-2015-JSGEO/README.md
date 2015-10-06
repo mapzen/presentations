@@ -4,13 +4,17 @@
 #### Patricio Gonzalez Vivo
 #####Thursday 8, ??:?? PM - 15’ Talks
 
-Hello I’m going to speak about how we procedural generated maps from OpenStreetMaps data.
+I’m going to speak about how we ***procedurally generate maps*** from OpenStreetMap data.
 
-My name is Patricio Gonzalez Vivo, I’m a new media artist working on the Graphic Engineering team of Mapzen, developing Tangram.
+Hello, My name is Patricio Gonzalez Vivo, I’m a new media artist working on the Graphic Engineering team of Mapzen, developing Tangram.
 
-Tangram is our 2D/3D map rendering engine that works on WebGL (on the web) and (openGL ES for native apps). We use all the power of the graphics card to render beautiful maps on the fly from vector tile from OpenStreetMap data.
+_Tangram is our 2D/3D map rendering engine that works on WebGL (on the web) and (openGL ES for native apps). We use all the power of the graphics card to render beautiful maps on the fly from vector tile from OpenStreetMap data.
 
-As an artist I’m one of the responsable of some of the graphics features that this engine supports, like the poly-lines tessellation, materials and lights systems. Materials? lights? Yes, our engine feeds from other inter disciplinary concepts to give more expressive resources. In this case some of the state of the art techniques of the computer graphics world.
+As an artist I’m one of the responsable of some of the graphics features that this engine supports, like the poly-lines tessellation, materials and lights systems. 
+
+Wait… Materials? lights? 
+
+Yes, our engine feeds from other interdisciplinary concepts to give more expressive resources. In this case some of the state of the art techniques of the computer graphics world.
 
 I’m talking about the ability of pushing the limits of digital cartography to this kinds of limits:
 
