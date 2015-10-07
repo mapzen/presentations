@@ -4,19 +4,19 @@
 #### Patricio Gonzalez Vivo
 #####Thursday 8, ??:?? PM - 15’ Talks
 
-Hello. Today I’m going to speak about how we procedurally draw maps from OpenStreetMaps data.
+Hello. Today I’m going to speak about how we **procedurally render** maps in Mapzen.
 
-My name is Patricio Gonzalez Vivo, I’m a new media artist working on the Graphic Engineering team of Mapzen.
+My name is Patricio Gonzalez Vivo, I’m a **new media artist** working as graphic engineer on Mapzen’s **graphic team**.
 
-One of our tools is call Tangram. A 2D/3D map rendering engine that works on WebGL (on the web) and (openGL ES for native apps). On it we use all the power of the graphics card to render beautiful maps from vector tile from OpenStreetMap data.
+One of our main applications is call **Tangram**. **A 2D/3D map rendering engine** that works both as a web and native application thanks to ***WebGL/OpenGL ES*** technology. On it, we use the power of the graphics card to render beautiful maps from ***OpenStreetMap vector tile data***.
 
 As an artist I’m one of the responsable of some of the graphics features that this engine supports, like the poly-lines tessellation, materials and lights systems. 
 
 Wait… Materials? lights? 
 
-Yes, our engine feeds from other interdisciplinary concepts to give more expressive resources. In this case some of the state of the art techniques of the computer graphics world.
+Yes, our engine feeds from other **interdisciplinary** concepts to give more **expressive** resources. In this case some of the **state of the art techniques of the computer graphics world**.
 
-I’m talking about the ability of pushing the limits of digital cartography to this kinds of limits:
+I’m talking about **the ability of pushing the limits of digital cartography** to this kinds of limits:
 
 Go to <http://tangrams.github.io/tangram-sandbox/>
 
@@ -30,11 +30,11 @@ Or if you like the movies:
 
 -  [From tron](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/tron#16.975/40.70411/-74.00930) [to the matrix](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/matrix#18.4/40.71310/-74.00599)
 
-You can really see the plasticity and flexibility of our engine.
+You can really see the **plasticity** and **flexibility** of our engine.
 
-How this technology works? Let me show you [one of the tools I’m working together with Lou](http://tangrams.github.io/tangram-play/). Hopefully this will show some of the behind the scenes of this Tangram Maps.
+**How this technology works**? Let me show you [one of the tools I’m working together with Lou](http://tangrams.github.io/tangram-play/). Hopefully this will show some of the behind the scenes of this Tangram Maps.
 
-This is TangramPlay, our online editing tool for tangram. Here on the right you can see the ```.yaml``` file Tangram use to construct the map.
+This is **TangramPlay, our online editing tool for tangram**. Here on the right you can see the ```.yaml``` file Tangram use to construct the map.
 
 ```yaml
 sources:
