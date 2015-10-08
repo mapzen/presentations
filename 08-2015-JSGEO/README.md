@@ -44,7 +44,8 @@ This is **Tangram Play, our online editing tool for tangram**. We believe that t
 
 [Here](http://tangrams.github.io/tangram-play/?lines=1-4) is the ***```source```*** of the data
 
-```sources:
+```json
+sources:
     osm:
         type: TopoJSON
         url:  //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson
