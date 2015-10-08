@@ -2,7 +2,7 @@
 
 ## Procedural Cartography with Tangram
 #### Patricio Gonzalez Vivo
-#####Thursday 8, ??:?? PM - 15’ Talks
+#####Thursday 8 October 2015, 2:00 PM - 15’ Talks
 
 Hello. Today I’m going to speak about how we **procedurally render** maps in Mapzen.
 
@@ -38,7 +38,7 @@ Examples like these let you really see the **plasticity** and **flexibility** of
 
 **How does this technology work**? Let me show you [one of the tools I’ve been working on with Lou](http://tangrams.github.io/tangram-play/). Hopefully this will give you some idea of what is the behind the scenes of these Tangram Maps.
 
-This is **Tangram Play, our online editing tool for tangram**. We believe that to keep up with the incredible **flexibility** that Tangram has to offer, language is one of the best interfaces. Here on the right side you can see the ```.yaml``` text file Tangram uses to construct the map.
+This is **Tangram Play, our online editing tool for tangram**. We believe that in order to keep up with the incredible **flexibility** that Tangram has to offer, language is one of the best interfaces. Here on the right side you can see the ```.yaml``` text file Tangram uses to construct the map.
 
 <screenshot TK>
 
