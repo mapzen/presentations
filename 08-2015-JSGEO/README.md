@@ -18,15 +18,19 @@ Yes, our engine feeds from other **interdisciplinary** concepts to give more **e
 
 I’m talking about **the ability to push the limits of digital cartography** to these kinds of limits:
 
-Go to [http://tangrams.github.io/tangram-sandbox/](http://tangrams.github.io/tangram-sandbox/) and see examples that range
+Go to [http://tangrams.github.io/tangram-sandbox/](http://tangrams.github.io/tangram-sandbox/) and see examples that range from
 
-- [from hand-sketched maps](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/pericoli#17.575/40.70495/-74.00486) [to retro digital onces](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/9845C#10.97291/40.7458/-74.0931)
+- [hand-sketched maps](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/pericoli#17.575/40.70495/-74.00486)
 
-- [to elegant](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/press#3.82729/20.73/-26.25) [to playfull](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/lego#19/40.70533/-74.00975)
+- [to retro digital ones](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/9845C#10.97291/40.7458/-74.0931)
+
+- [to elegant](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/press#3.82729/20.73/-26.25) 
+
+- [to playful](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/lego#19/40.70533/-74.00975)
 
 - [to design](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/patterns#17.375/40.70361/-74.01181) 
 
-- [to architectural](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/blueprint#16.575/40.70321/-74.00666)
+- [and architectural](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/blueprint#16.575/40.70321/-74.00666)
 
 Or if you like the movies:
 
@@ -38,7 +42,7 @@ Examples like these let you really see the **plasticity** and **flexibility** of
 
 **How does this technology work**? Let me show you [one of the tools I’ve been working on with Lou](http://tangrams.github.io/tangram-play/). Hopefully this will give you some idea of what is the behind the scenes of these Tangram Maps.
 
-This is **Tangram Play, our online editing tool for tangram**. We believe that in order to keep up with the incredible **flexibility** that Tangram has to offer, language is one of the best interfaces. Here on the right side you can see the ```.yaml``` text file Tangram uses to construct the map.
+This is **Tangram Play, our online editing tool for tangram**. In order to keep up with the incredible **flexibility** that Tangram has to offer, we believe that language is one of the best interfaces. Here on the right side you can see the ```.yaml``` text file Tangram uses to construct the map.
 
 <screenshot TK>
 
