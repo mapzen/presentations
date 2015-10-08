@@ -55,7 +55,8 @@ sources:
 
 [Here](http://tangrams.github.io/tangram-play/?lines=22-77) we parse the ***```layers```*** from that data
  
-```layers:
+```json
+layers:
     water:
         data: { source: osm }
         draw:
