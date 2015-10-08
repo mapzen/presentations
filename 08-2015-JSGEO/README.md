@@ -168,7 +168,7 @@ lights:
 
 But this is not the most flexible feature of tangram, language is. Tangram lets you inject pieces of code into your styles to hijack the main rendering pipe, in real-time. 
 
-This is done by using ***injections points*** to the shader of each style. ***Language*** is human most versatile tool, let’s us imagine things, define them and share them.
+This is done by using ***injections points*** to the shader of each style. ***Language*** is humanity's most versatile tool, so let’s imagine things, define them and share them.
 
 It is through computer graphics languages (in this case GLSL) that the user can change the ***```position```***, ***```width```***, orientation (aka ***```normals```***) and pre-lightening ***```color```*** or post-lightening color (known as ***```filter```***) of anything rendered in Tangram Maps.
 
@@ -190,7 +190,7 @@ Let’s see what happens when I comment it out (comment/uncomment that line):
 
 **screenshot to come**
 
-Because we believe that this .yaml style provide great flexibility for our engine, we didn’t try to hide the code in Tangram Play. We are making a ***professional*** text editor, one that gives total and transparent control on the design of the map. We focus our attention on illuminating the experience of using it.
+Because we believe that this .yaml style provides great flexibility for our engine, we didn’t try to hide the code in Tangram Play. We are making a ***professional*** text editor, one that gives total and transparent control on the design of the map. We focus our attention on illuminating the experience of using it.
 
 Let me show you an example of this:
 
@@ -206,9 +206,9 @@ tangramPlay.initAddon(‘sandbox’)
 
 So while I edit my shaders, I can preview them in this little sandbox. 
 
-Here is something interesting. If you pay attention the streets goes in the right direction. How does this works?
+Here is something interesting: If you pay attention the streets goes in the right direction. How does this work?
 
-- Well in this line ```layers``` line:
+Well in this line ```layers``` line...
 
 ```yaml
     roads:
@@ -229,7 +229,7 @@ Here is something interesting. If you pay attention the streets goes in the righ
        >>>> draw: { roads: { color: red } } <<<<
 ```
 
-I’m filtering the oneway roads and assigning them a red color. This is picked up in this line of the shader:
+...I’m filtering the oneway roads and assigning them a red color. This is picked up in this line of the shader:
 
 ```yaml
     roads:
@@ -260,7 +260,7 @@ I’m filtering the oneway roads and assigning them a red color. This is picked 
                     color.gb *= step(0.1,st.x)-step(0.9,st.x);
 ```
 
-And change the animation to a different pattern!
+And changes the animation to a different pattern!
 
 The fact the we are using code also provides modularity. Not everybody knows how to write shaders. That’s why I’m working on a library. Right know looks more like a collection of snippets:
 
