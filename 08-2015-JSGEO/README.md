@@ -44,7 +44,7 @@ This is **Tangram Play, our online editing tool for tangram**. We believe that t
 
 [Here](http://tangrams.github.io/tangram-play/?lines=1-4) is the ***```source```*** of the data
 
-```json
+```yaml
 sources:
     osm:
         type: TopoJSON
@@ -55,7 +55,7 @@ sources:
 
 [Here](http://tangrams.github.io/tangram-play/?lines=22-77) we parse the ***```layers```*** from that data
  
-```json
+```yaml
 layers:
     water:
         data: { source: osm }
