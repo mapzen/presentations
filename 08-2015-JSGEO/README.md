@@ -24,7 +24,9 @@ Go to [http://tangrams.github.io/tangram-sandbox/](http://tangrams.github.io/tan
 
 - [to elegant](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/press#3.82729/20.73/-26.25) [to playfull](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/lego#19/40.70533/-74.00975)
 
-- [to design](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/patterns#17.375/40.70361/-74.01181) [to architectural](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/blueprint#16.575/40.70321/-74.00666)
+- [to design](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/patterns#17.375/40.70361/-74.01181) 
+
+- [to architectural](http://tangrams.github.io/tangram-sandbox/tangram.html?styles/blueprint#16.575/40.70321/-74.00666)
 
 Or if you like the movies:
 
@@ -128,7 +130,7 @@ styles:
                     color.rgb *= vec3(min((v_world_position.z*.001 + .5),1.));
 ```
  
-**So far**, I think this **looks like pretty much any other template** for raster maps,  right? 
+**So far**, I think this **looks like pretty much any other template** for raster maps, right? 
 
 # **Here is where it starts getting interesting**. 
 
@@ -184,13 +186,13 @@ styles:
                     color.gb *= vec3(min((v_world_position.z*.001 + .5),1.));
 ```
 
-In it we are adding a gradient on the **sides** of the buildings as they get closer to the ground.
+In it we are adding a gradient to the **sides** of the buildings as they get closer to the ground.
 
 Let’s see what happens when I comment it out (comment/uncomment that line):
 
 **screenshot to come**
 
-Because we believe that this .yaml style provides great flexibility for our engine, we didn’t try to hide the code in Tangram Play. We are making a ***professional*** text editor, one that gives total and transparent control on the design of the map. We focus our attention on illuminating the experience of using it.
+Because we believe that this .yaml style provides great flexibility for our engine, we didn’t try to hide the code in Tangram Play. We are making a ***professional*** text editor, one that gives total and transparent control around the design of the map. We focus our attention on illuminating the experience of using it.
 
 Let me show you an example of this:
 
@@ -206,7 +208,7 @@ tangramPlay.initAddon(‘sandbox’)
 
 So while I edit my shaders, I can preview them in this little sandbox. 
 
-Here is something interesting: If you pay attention the streets goes in the right direction. How does this work?
+Here is something interesting: If you pay attention the 'traffic' on the streets goes in the right direction. How does this work?
 
 Well in this line ```layers``` line...
 
@@ -229,7 +231,7 @@ Well in this line ```layers``` line...
        >>>> draw: { roads: { color: red } } <<<<
 ```
 
-...I’m filtering the oneway roads and assigning them a red color. This is picked up in this line of the shader:
+...I’m filtering the oneway roads from OSM and assigning them a red color. This is picked up in this line of the shader:
 
 ```yaml
     roads:
@@ -260,7 +262,7 @@ Well in this line ```layers``` line...
                     color.gb *= step(0.1,st.x)-step(0.9,st.x);
 ```
 
-And changes the animation to a different pattern!
+And the animation changes to a different pattern!
 
 The fact the we are using code also provides modularity. Not everybody knows how to write shaders. That’s why I’m working on a library. Right know looks more like a collection of snippets:
 
@@ -284,4 +286,4 @@ And we can “tilt“ the view of the map:
 
 <http://tangrams.github.io/tangram-play/?style=https://rawgit.com/tangrams/tangram-sandbox/gh-pages/styles/tilt-ikeda.yaml#19.6622916666668/40.70489/-74.00858>
 
-Thank you! Follow us on Twitter and keep an eye on the Tangram web page and github repository for the latest on Tangram and Tangram Play. **"Here is where it starts getting interesting."**
+Thank you! Follow us on Twitter and keep an eye on the Tangram web page and github repository for the latest on Tangram and Tangram Play. *"Here is where it starts getting interesting."*
