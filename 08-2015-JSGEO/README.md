@@ -290,4 +290,4 @@ And we can “tilt“ the view of the map:
 
 <http://tangrams.github.io/tangram-play/?style=https://rawgit.com/tangrams/tangram-sandbox/gh-pages/styles/tilt-ikeda.yaml#19.6622916666668/40.70489/-74.00858>
 
-Thank you! Follow us on Twitter and keep an eye on the Tangram web page and github repository for the latest on Tangram and Tangram Play. *"Here is where it starts getting interesting."*
+Thank you! [Follow us on Twitter](http://twitter.com/mapzen) and keep an eye on the [Tangram web page](https://mapzen.com/projects/tangram) and the [Tangram github repository](https://github.com/tangrams/) for the latest on Tangram and Tangram Play. *"Here is where it starts getting interesting."*
