@@ -118,7 +118,8 @@ layers:
 
 [Here](http://tangrams.github.io/tangram-play/?lines=15-21) we can define customs ***```styles```*** for these layers.
 
-```styles:
+```yaml
+styles:
     buildings:
         base: polygons
         shaders:
