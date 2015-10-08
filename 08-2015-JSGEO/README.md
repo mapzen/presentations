@@ -34,7 +34,7 @@ You can really see the **plasticity** and **flexibility** of our engine.
 
 **How this technology works**? Let me show you [one of the tools I’m working together with Lou](http://tangrams.github.io/tangram-play/). Hopefully this will show some of the behind the scenes of this Tangram Maps.
 
-This is **TangramPlay, our online editing tool for tangram**. Here on the right you can see the ```.yaml``` file Tangram use to construct the map.
+This is **TangramPlay, our online editing tool for tangram**. We believe that to keep up with the incredible **flexibility** Tangram have to offer, language is one of the best interfaces. Here on the right you can see the ```.yaml``` file Tangram use to construct the map.
 
 ```yaml
 sources:
@@ -87,7 +87,7 @@ layers:
 
 - Then [here](http://tangrams.github.io/tangram-play/?lines=15-21) we can define customs ***```styles```*** for this layers.
  
-So far up to here, I think looks pretty much as any other template system to raster maps. Right? Here is where start getting interesting. The next properties are more proper from a 3D engine.
+**So far** up to here, I think **looks pretty much as any other template** system to raster maps. Right? **Here is where start getting interesting**. The next properties are more proper from a 3D engine.
 
 - define the [***```camera```***](http://tangrams.github.io/tangram-play/?lines=5-8)
 
