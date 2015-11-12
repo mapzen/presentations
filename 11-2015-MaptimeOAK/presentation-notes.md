@@ -4,8 +4,7 @@ Welcome to [MaptimeOAK on geocoding and place search](http://www.meetup.com/Mapt
 
 12 November 2015
 
-Rhonda Glennon
-([Mapzen](https://mapzen.com/), `@rmglennon`)
+Rhonda Glennon - [Mapzen](https://mapzen.com/), `@rmglennon`
 
 Geocoding turns addresses and place names into geographic coordinates for mapping. Geocoding is one of the essential tools you need to put points on maps and power routing and navigation. When you type in an address or landmark in to your phone, a geocoding process converts those words into coordinates and displays the search result on your map.
 
