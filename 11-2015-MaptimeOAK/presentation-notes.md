@@ -1,12 +1,10 @@
 # MaptimeOAK: Geocoding and place search edition
 
-Let's talk about [geocoding](http://www.meetup.com/Maptime-SF/events/226540295/)
+[Let's talk about geocoding](http://www.meetup.com/Maptime-SF/events/226540295/)
 
-Rhonda Glennon - [Mapzen](https://mapzen.com/), `@rmglennon`
+Facilitator: Rhonda Glennon - [Mapzen](https://mapzen.com/), `@rmglennon`
 
-12 November 2015
-
-## Agenda
+## Agenda (12 November 2015)
 
 - Welcome and introductions
 - Get ready for the tutorial: install a text editor
