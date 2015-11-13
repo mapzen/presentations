@@ -1,12 +1,10 @@
 # MaptimeOAK: Geocoding and place search edition
 
-Welcome to [MaptimeOAK on geocoding and place search](http://www.meetup.com/Maptime-SF/events/226540295/)
+Let's talk about [geocoding](http://www.meetup.com/Maptime-SF/events/226540295/)
 
 Rhonda Glennon - [Mapzen](https://mapzen.com/), `@rmglennon`
 
 12 November 2015
-
-Geocoding turns addresses and place names into geographic coordinates for mapping. Geocoding is one of the essential tools you need to put points on maps and power routing and navigation. When you type in an address or landmark in to your phone, a geocoding process converts those words into coordinates and displays the search result on your map.
 
 ## Agenda
 
@@ -33,6 +31,9 @@ Example text editors:
 For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
 ## Basics
+
+Geocoding turns addresses and place names into geographic coordinates for mapping. Geocoding is one of the essential tools you need to put points on maps and power routing and navigation. When you type in an address or landmark in to your phone, a geocoding process converts those words into coordinates and displays the search result on your map.
+
 
 ### Common terminology
 
