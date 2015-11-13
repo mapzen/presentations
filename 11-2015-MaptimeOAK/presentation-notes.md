@@ -4,7 +4,7 @@
 
 Facilitator: Rhonda Glennon - [Mapzen](https://mapzen.com/), `@rmglennon`
 
-## Agenda (12 November 2015)
+## Agenda
 
 - Welcome and introductions
 - Get ready for the tutorial: install a text editor
@@ -67,3 +67,7 @@ Follow along with the group, or work ahead on your own.
 Walkthrough instructions: https://github.com/pelias/pelias-doc/blob/master/add-search-to-a-map.md
 
 You can find the rest of Mapzen's documentation at https://mapzen.com/documentation (This tutorial will be modified for general use and added to the website after MaptimeOAK.)
+
+--
+
+Session held on 12 November 2015
