@@ -65,22 +65,17 @@ Your HTML should look like this:
 
 ## Add references to CSS and JavaScript files
 
-The Leaflet JavaScript library provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search geocoder plug-in.
+The Leaflet JavaScript library provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps.
 
-A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your `index.html` file, you need to list the CSS and JavaScript files required for building a page with Leaflet and the geocoder plug-in.
+Mapzen has packaged Leaflet into a library called Mapzen.js. It contains all the Leaflet functionality, as well as additional tools for working with Mapzen maps and search. Mapzen.js simplifies the process of using Mapzen's maps within Leaflet.
 
-1. In `index.html`, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these from a remote website, rather than from a file on your machine.
+A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your `index.html` file, you need to list the CSS and JavaScript files.
 
-    ```html
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-    ```
-
-2. In the `<head>` section, directly after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These are also being linked to on a website.
+1. In `index.html`, at the bottom of the `<head>` section, add references to the Mapzen.js CSS and JavaScript files. You are linking to these from a remote website, rather than from a file on your machine.
 
     ```html
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.js"></script>
+    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+    <script src="https://mapzen.com/js/mapzen.min.js"></script>
     ```
 
 3. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
@@ -93,17 +88,15 @@ After adding these, your index.html file should look something like this.
   <head>
   <title>My Geocoding Map</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.js"></script>
+    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+    <script src="https://mapzen.com/js/mapzen.min.js"></script>
 </head>
 <body>
 </body>
 </html>
 ```
 
-Note that you are linking to a website that is serving the geocoder's CSS and JavaScript, but you can also [view, download, and contribute to the source code](https://github.com/mapzen/leaflet-geocoder) if you want to access the contents of the plug-in.
+Note that you are linking to a website that is serving the Mapzen.js CSS and JavaScript, but you can also [view, download, and contribute to the source code](https://github.com/mapzen/mapzen.js) if you want to access the contents of the library.
 
 ## Add a map to the page
 
@@ -128,22 +121,25 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
     <div id="map"></div>
     ```
 
-3. Directly after the `<div>`, add this JavaScript code within a `<script>` tag to initialize Leaflet.
+3. Directly after the `<div>`, add this JavaScript code within a `<script>` tag to initialize a map.
 
     ```html
     <script>
-      var map = L.map('map').setView([37.804146, -122.275045], 16);
+		var map = L.Mapzen.map('map', {
+  			center: [40.74429, -73.99035],
+  			zoom: 15,
+  			scene: L.Mapzen.HouseStyles.Refill
+		})
     </script>
     ```
 
-    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` part sets the center of the map, in decimal degrees, and the zoom level. The map is centered in Oakland, California, with a zoom level that allows you to see the streets and features of the city. Zoom levels are like map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+    `L.xxxxx` is a convention used with the Leaflet API. The `center: [40.74429, -73.99035]` part sets the center of the map, in decimal degrees, and the next line sets the zoom level. The map is centered in Seattle, Washington, with a zoom level that allows you to see the streets and features of the city. Zoom levels are like map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+    
+    The `scene: L.Mapzen.HouseStyles.Refill` line sets the style used for the map. In this case, it is Mapzen's Refill style, which is a black-and-white basemap.
 
 4. Within the same `<script>` tag, start a new line and set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
 
     ```html
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-    }).addTo(map);
     ```
 5. Save your edits and refresh the browser.
 
