@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+
+    <style>
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+    html,body{margin: 0; padding: 0}
+  </style>
+
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // Add a map to the #map div
+      // Center on the Pigott building at Seattle University:
+      var map = L.Mapzen.map('map', {
+        center: [47.61033,-122.31801],
+        zoom: 16,
+        scene: L.Mapzen.HouseStyles.BubbleWrap
+      });
+
+      // Use the center of the map as the focusPoint (updates when panning)
+      // getCenter returns a latLng object with properties of lat, lng
+      var focusPoint = map.getCenter('map');
+
+      var geocoder = L.Mapzen.geocoder('search-SKcvklU', {
+				params: {
+          focus: focusPoint,
+          // Get the lat, lon from the focus point
+          'boundary.circle.lat': focusPoint.lat,
+          'boundary.circle.lon': focusPoint.lng,
+          // Set a radius to search around the point, in km
+          'boundary.circle.radius': 5,
+          // Use only OpenStreetMap as the data source
+           sources: 'osm'
+				}
+			})
+      geocoder.addTo(map);
+
+    </script>
+  </body>
+</html>
