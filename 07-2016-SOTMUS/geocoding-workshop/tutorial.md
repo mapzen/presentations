@@ -6,15 +6,6 @@ Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding),
 
 In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You also need a Mapzen Search [API key](https://mapzen.com/developers), which requires a [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for authorization. You can use any text editor and operating system, but must keep an Internet connection while you are working.
 
-## Sign up for a Mapzen Search API key
-
-To use the geocoding service, you must first get a Mapzen Search [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key). Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. Sign in at https://mapzen.com/developers to create and manage your API keys.
-
-1. Go to https://mapzen.com/developers.
-2. Sign in with your [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/). If you have not done this before, you need to agree to the terms first.
-3. Create a new key for Search, and optionally, give it a project name so you can remember the purpose of the key.
-4. Keep the web page open so you can copy the key into the source code later.
-
 ## Create an index page
 
 You are ready to start building your map. You will need to use a text editor to update the HTML.
@@ -125,16 +116,16 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
 
     ```html
     <script>
-		var map = L.Mapzen.map('map', {
-  			center: [40.74429, -73.99035],
-  			zoom: 15,
-  			scene: L.Mapzen.HouseStyles.Refill
-		})
+      var map = L.Mapzen.map('map', {
+        center: [47.61033,-122.31801],
+        zoom: 16,
+        scene: L.Mapzen.HouseStyles.BubbleWrap
+      });
     </script>
     ```
 
-    `L.xxxxx` is a convention used with the Leaflet API. The `center: [40.74429, -73.99035]` part sets the center of the map, in decimal degrees, and the next line sets the zoom level. The map is centered in Seattle, Washington, with a zoom level that allows you to see the streets and features of the city. Zoom levels are like map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
-    
+    `L.xxxxx` is a convention used with the Leaflet API. The `center: [47.61033,-122.31801]` part sets the center point of the map, in decimal degrees, at the location of this building at Seattle University. The next line sets the zoom level, which is like map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+
     The `scene: L.Mapzen.HouseStyles.Refill` line sets the style used for the map. In this case, it is Mapzen's Refill style, which is a black-and-white basemap.
 
 4. Within the same `<script>` tag, start a new line and set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
@@ -235,7 +226,7 @@ In this walkthrough, you learned the basics of adding the Mapzen Search geocodin
 
 Because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and decide if the problem is caused by software or data, and work to fix it either way.
 
-To take your map even further, you can follow along with some additional Mapzen tutorials. One exercise you can try is to use [Mapzen's Tangram rendering engine](https://mapzen.com/documentation/turn-by-turn/add-routing-to-a-map/#add-a-tangram-map-to-the-frame) and vector tiles to draw the data on the map, instead of the OpenStreetMap raster tile layer you used in this walkthrough. When you get your map the way you want, you might be interested in [putting your map on the web](https://mapzen.com/documentation/tangram/walkthrough/#put-your-tangram-map-on-the-web) so you can share your work with others.
+In this workshop, you were provided with an API key. To use Mapzen Search in the future, sign up for your own  [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key). Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. Sign in at https://mapzen.com/developers to create and manage your API keys.
 
 ## Completed HTML for this walkthrough
 
