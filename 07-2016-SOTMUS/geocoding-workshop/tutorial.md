@@ -69,7 +69,7 @@ A cascading style sheet (CSS) is used to style a webpage, including layout and f
     <script src="https://mapzen.com/js/mapzen.min.js"></script>
     ```
 
-3. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
+2. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
 
 After adding these, your index.html file should look something like this.
 
@@ -124,101 +124,195 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
     </script>
     ```
 
-    `L.xxxxx` is a convention used with the Leaflet API. The `center: [47.61033,-122.31801]` part sets the center point of the map, in decimal degrees, at the location of this building at Seattle University. The next line sets the zoom level, which is like map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+    `L.xxxxx` is a convention used with the Leaflet API. The `center: [47.61033,-122.31801]` parameter sets the center point of the map, in decimal degrees, at the location of this building at Seattle University. The next line sets the zoom level, which is like a map scale or resolution, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
 
-    The `scene: L.Mapzen.HouseStyles.Refill` line sets the style used for the map. In this case, it is Mapzen's Refill style, which is a black-and-white basemap.
+    The `scene: L.Mapzen.HouseStyles.BubbleWrap` line sets the style used for the map. In this case, it is Mapzen's all-purpose stylesheet called BubbleWrap.
 
-4. Within the same `<script>` tag, start a new line and set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
-
-    ```html
-    ```
-5. Save your edits and refresh the browser.
+4. Save your edits and refresh the browser.
 
 Your index.html should look something like this:
 
 ```html
 <!DOCTYPE html>
-<html>
-<head>
-  <title>My Geocoding Map</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.js"></script>
-  <style>
-    #map {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-    }
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+
+    <style>
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
     html,body{margin: 0; padding: 0}
   </style>
-</head>
-<body>
-  <div id="map"></div>
-  <script>
-    var map = L.map('map').setView([37.804146, -122.275045], 16);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-    }).addTo(map);
-  </script>
-</body>
+
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // Add a map to the #map div
+      // Center on the Pigott building at Seattle University:
+      var map = L.Mapzen.map('map', {
+        center: [47.61033,-122.31801],
+        zoom: 16,
+        scene: L.Mapzen.HouseStyles.BubbleWrap
+      });
+    </script>
+  </body>
 </html>
 ```
 
-At this point, you have a map! You should see a map with OpenStreetMap tiles, zoom controls, and a Leaflet attribution in the bottom corner.
+At this point, you have a map! You should see a map, zoom controls, and attribution in the bottom corner.
 
 ![Leaflet canvas map with controls and attribution](images/geocoder-osm-leaflet.png)
 
 ## Add the Search box
 
-So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box from the Mapzen Search plug-in.
+So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box.
 
-1. Go back to the https://mapzen.com/developers page and copy your API key to the clipboard.
-2. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line. Initialize a search box with the following code and your own API key substituted for the placeholder text of `search-xxxxxx`.
+2. Inside the same `<script>` tag, initialize a search box and add it to the map with the following code.
 
     ```js
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
+    var geocoder = L.Mapzen.geocoder('search-q78U1e7');
+    geocoder.addTo(map);
     ```
 
-    The `search-xxxxxx` text is the Mapzen Search API key; paste your own API key inside the single quotes.
+    You are passing one parameter to the search, which is the [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key) inside the single quotes. For this workshop, you are being provided with an API key. Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone.
 
-3. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
+3. Save your edits and refresh the browser. You should see search box in the left corner, near the zoom controls.
 
     ![Search icon on the map canvas](images/geocoder-search-icon.png)
-
-4. Click the button to display the Search box on the map. The Search box closes if you click away from it.
-
-    ![Expanded Search box on the map canvas](images/geocoder-search-box.png)
 
 Your `<body>` section should look like this:
 
 ```html
 [...]
-<body>
-  <div id="map"></div>
-  <script>
-    var map = L.map('map').setView([37.804146, -122.275045], 16);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-    }).addTo(map);
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
-  </script>
+<script>
+  // Add a map to the #map div
+  // Center on the Pigott building at Seattle University:
+  var map = L.Mapzen.map('map', {
+    center: [47.61033,-122.31801],
+    zoom: 16,
+    scene: L.Mapzen.HouseStyles.BubbleWrap
+  });
+
+  // Add the Search box to the map
+  var geocoder = L.Mapzen.geocoder('search-q78U1e7');
+  geocoder.addTo(map);
+</script>
 </body>
 [...]
 ```
 
 ## Search for places on the map
 
-1. On the map, type `555 12th` in the Search box. As you type, the text automatically completes to suggest matching results.
-2. In the results list, find the entry for `555 12th Street, Oakland, CA` and click it to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
+1. On the map, type `Seattle University` in the Search box. As you type, the text automatically completes to suggest matching results.
+2. In the results list, find the entry for `Seattle University` and click it to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
 
     ![Entering an address to find on the map](images/geocoder-address-search.png)
+3. Search for other addresses or points of interest.
 
-If you want to [customize the geocoder plug-in behavior](https://github.com/pelias/leaflet-geocoder#customizing-the-plugin) beyond the defaults in this Walkthrough, you can set additional options in your code. For example, the Search box collapses to an icon by default, but you can specify that the text box be shown at full width. There are also options for customizing the parameters for the Mapzen Search service, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list.
+## Customize the geocoder
 
-Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets. Mapzen is also building a comprehensive, open database of places known as [Who's on First](https://github.com/whosonfirst/whosonfirst-data) that can be publicly edited, and is working on integrating it into the geocoder.  
+Mapzen.js provides options for customizing the way you interact with the map, and the Mapzen Search is also very flexible. Now that you have a map on your page with a Search box, you can add more features to it. You need to modify the line defining the geocoder to include additional parameters.
+
+1. Modify the geocoder so you can pass in other parameters. Make sure the () and {} close properly.
+
+```js
+  var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+  });
+  geocoder.addTo(map);
+```
+
+2. Add the `autocomplete: false` following parameter to specify whether the Search box should autocomplete as you type. Autocomplete is enabled by default, so adding this means that you will turn it off.
+
+```js
+  var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+    autocomplete: false
+  });
+  geocoder.addTo(map);
+```
+3. Save your edits and refresh the browser. Type `901 12th Avenue` in the Search box and press Enter. Notice now that the results are not found until you press the Enter key.
+
+The Mapzen Search API has multiple endpoints that you can use for querying. Previously, you were using the `autocomplete` endpoint, but now you are using `search`. You can find a listing of all the endpoints and parameters in the Mapzen Search documentation.
+
+If you look at your browser's developer tools, you can see the query URL change from `https://search.mapzen.com/v1/autocomplete?text=` to `https://search.mapzen.com/v1/search?text=`.
+
+4. Change the value of `autocomplete` to `true` so the matching results will again appear as you type.
+
+## Prioritize results around a location
+
+Mapzen Search allows you to provide a location where to priortize the results. This is known as a focus. You can also search within a circle with a specific radius to narrow your results. There are also options for customizing the parameters for the Mapzen Search service, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list.
+
+Because Mapzen.js includes the functionality available with Leaflet, you can use the Leaflet `getCenter()` method to return the geographical center of your map view. The code returns an `LatLng` object with an array containing the latitude and longitude values in decimal degrees.
+
+1. On the line above the `var geocoder = L.Mapzen.geocoder('search-q78U1e7', {`, add the following code to declare a variable to hold the coordinates at the center of the map.
+
+```js
+  var focusPoint = map.getCenter('map');
+  var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+```
+
+2. Add these parameters to set the focus point and a circle in which to search. The radius is set in kilometers. Be sure to add a `,` after the `autocomplete: true` line.
+
+```js
+var focusPoint = map.getCenter('map');
+var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+  autocomplete: true,
+  params: {
+       focus: focusPoint,
+       'boundary.circle.lat': focusPoint.lat,
+       'boundary.circle.lon': focusPoint.lng,
+       'boundary.circle.radius': 5
+   	}
+});
+geocoder.addTo(map);
+```
+
+The code you added in this section should look something like this.
+
+```js
+var focusPoint = map.getCenter('map');
+var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+  autocomplete: true,
+  params: {
+       focus: focusPoint,
+       'boundary.circle.lat': focusPoint.lat,
+       'boundary.circle.lon': focusPoint.lng,
+       'boundary.circle.radius': 5
+    }
+});
+geocoder.addTo(map);
+```
+
+## Choose which data sources to search
+
+Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets.
+
+You can choose which data sources to search by passing a parameter for the `sources`.
+
+1. Add `sources: osm` to the list of params. Be sure to add a `comma` to the line above it.
+
+```js
+var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+  autocomplete: true,
+  params: {
+       focus: focusPoint,
+       'boundary.circle.lat': focusPoint.lat,
+       'boundary.circle.lon': focusPoint.lng,
+       'boundary.circle.radius': 5,
+       sources: 'osm'
+  }
+});
+geocoder.addTo(map);
+```
+2. Save your edits and refresh the browser.
+3. Type `library` in the Search box and choose one of the results in the list.
+
 
 ## Walkthrough summary
 
@@ -234,34 +328,54 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
 
 ```html
 <!DOCTYPE html>
-<html>
-<head>
-  <title>My Geocoding Map</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.js"></script>
-  <style>
-    #map {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-    }
+<html lang="en">
+  <head>
+    <title>My Geocoding Map</title>
+    <meta charset="utf-8">
+      <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+      <script src="https://mapzen.com/js/mapzen.min.js"></script>
+
+    <style>
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
     html,body{margin: 0; padding: 0}
   </style>
-</head>
-<body>
-  <div id="map"></div>
-  <script>
-    var map = L.map('map').setView([37.804146, -122.275045], 16);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-    }).addTo(map);
 
-    //Use your own API key in place of this one. Get a key at mapzen.com/developers.
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
-  </script>
-</body>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // Add a map to the #map div
+      // Center on the Pigott building at Seattle University:
+      var map = L.Mapzen.map('map', {
+        center: [47.61033,-122.31801],
+        zoom: 16,
+        scene: L.Mapzen.HouseStyles.BubbleWrap
+      });
+
+      // Use the center of the map as the focusPoint (updates when panning)
+      // getCenter returns a latLng object with properties of lat, lng
+      var focusPoint = map.getCenter('map');
+
+      // Add the Search box to the map
+      var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+        autocomplete: true,
+        params: {
+             focus: focusPoint,
+        //     // Get the lat, lon from the focus point
+             'boundary.circle.lat': focusPoint.lat,
+             'boundary.circle.lon': focusPoint.lng,
+        //     // Set a radius to search around the point, in km
+             'boundary.circle.radius': 5,
+        //     // Use only OpenStreetMap as the data source
+              sources: 'osm'
+         	}
+      });
+      geocoder.addTo(map);
+    </script>
+  </body>
 </html>
 ```
