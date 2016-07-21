@@ -284,7 +284,7 @@ Because Mapzen.js includes the functionality available with the Leaflet library,
 3. Save your edits and refresh the browser.
 4. Type `library` in the Search box and choose one of the results in the list. This time, notice that the results are restricted to facilities in Seattle.
 
-_ Extra credit: Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools. The Network tab shows the Internet traffic, including the queries to the Mapzen servers. The Headers tab shows more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/autocomplete?text=library&focus.point.lat=47.610336680421604&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7&focus=LatLng(47.61033%2C%20-122.31801)&boundary.circle.lat=47.61033&boundary.circle.lon=-122.31801&boundary.circle.radius=5` You can use this URL in a new browser tab to see the JSON response, or even map it. The website, geojson.io, allows you to copy and paste the JSON onto the page and search see the results on a map. _
+_Extra credit: Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools. The Network tab shows the Internet traffic, including the queries to the Mapzen servers. The Headers tab shows more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/autocomplete?text=library&focus.point.lat=47.610336680421604&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7&focus=LatLng(47.61033%2C%20-122.31801)&boundary.circle.lat=47.61033&boundary.circle.lon=-122.31801&boundary.circle.radius=5` You can use this URL in a new browser tab to see the JSON response, or even map it. The website, geojson.io, allows you to copy and paste the JSON onto the page and search see the results on a map._
 
 The code you added in this section should look something like this.
 
@@ -308,7 +308,7 @@ Mapzen Search uses a [variety of open data sources](https://mapzen.com/documenta
 
 You can choose which data sources to search by passing a parameter for the `sources`.
 
-1. Add `sources: osm` to the list of `params:`. Be sure to add a `,` to the end of the line above it.
+1. Add `sources: 'osm'` to the list of `params:`. Be sure to add a `,` to the end of the line above it.
 
   ```js
   var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
@@ -376,12 +376,12 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
         autocomplete: true,
         params: {
              focus: focusPoint,
-        //     // Get the lat, lon from the focus point
+             // Get the lat, lon from the focus point
              'boundary.circle.lat': focusPoint.lat,
              'boundary.circle.lon': focusPoint.lng,
-        //     // Set a radius to search around the point, in km
+             // Set a radius to search around the point, in km
              'boundary.circle.radius': 5,
-        //     // Use only OpenStreetMap as the data source
+             // Use only OpenStreetMap as the data source
               sources: 'osm'
          	}
       });
