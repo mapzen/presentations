@@ -1,4 +1,4 @@
-# Add the Mapzen Search geocoder to a map
+# Workshop: Add the Mapzen Search geocoder to an interactive map
 
 [Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and open data. Use this functionality to enhance any app that has a geographic context, such as ones that help in delivering goods, locating hotels or venues, or providing local weather forecasts.
 
@@ -210,24 +210,25 @@ Your `<body>` section should look like this:
 
 ## Search for places on the map
 
-Now, you will test your search box.
+Now, you will test your search box by finding a few locations. As you type, the text automatically completes to suggest matching results. .
 
-1. On the map, type `Seattle University` in the Search box. As you type, the text automatically completes to suggest matching results.
+1. On the map, type `Seattle University` in the Search box.
 2. In the results list, find the entry for `Seattle University` and click it to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
 
     ![Entering an address to find on the map](images/geocoder-address-search.png)
-3. Search for `library` and notice that you see many entries that seem irrelevant to your location. You will improve the search results in a later section of this workshop.
-4. Search for other addresses or places to experiment with the search function.
+3. Search for other addresses or places to experiment with the search function and get an idea of the results it returns. For example, you might try looking for a point of interest in Seattle, your work address, or a city outside the United States.
 
 ## Customize the geocoder
 
 Mapzen.js provides options for customizing the way you interact with the map, and Mapzen Search is also very flexible. Now that you have a map on your page with a Search box, you can add more features to it. You need to modify the line defining the geocoder to include additional parameters.
 
-Mapzen Search is a web service with that has various API endpoints that allow you to access web resources through a URL. Behind the scenes, the geocoder is constructing a URL with the paramters you specify and sending it to the Mapzen Search web service. The service returns human-readable JSON, or JavaScript Object Notation.
+Mapzen Search is a web service with that has various API endpoints that allow you to access web resources through a URL. Behind the scenes, the geocoder is constructing a URL with the parameters you specify and sending it to the Mapzen Search web service. The service returns human-readable JSON, or JavaScript Object Notation.
 
-Up to this point, you have been using the Mapzen Search `autocomplete` endpoint, which searches on text as you type it. In this section, you will switch to the `search` endpoint to see how it behaves. If you look at your browser's developer tools console as you are doing this, you can see the query URL changes from `https://search.mapzen.com/v1/autocomplete?text=` to `https://search.mapzen.com/v1/search?text=` to reflect the `search` endpoint.
+Up to this point, you have been using the Mapzen Search `autocomplete` endpoint, which searches on text as you type it. In this section, you will switch to the `search` endpoint to see how it behaves. The `autocomplete` functionality helps you find partial matches, whereas `search` prioritizes exact words because it assumes you have finished typing when you perform the query.
 
-Although you will not be using it in this workshop, `reverse` is another common Mapzen Search endpoint. It performs reverse geocoding to find the address at a given coordinate location. You can find a listing of all the endpoints and parameters in the [Mapzen Search documentation](.
+If you look at your browser's developer tools console as you are doing this, you can see the query URL changes from `https://search.mapzen.com/v1/autocomplete?text=` to `https://search.mapzen.com/v1/search?text=` to reflect the `search` endpoint.
+
+Although you will not be using it in this workshop, `reverse` is another common Mapzen Search endpoint. It performs reverse geocoding to find the address at a given coordinate location. You can find a listing of all the endpoints and parameters in the [Mapzen Search documentation](https://mapzen.com/documentation/search/).
 
 1. Modify the geocoder code block so you can pass in other parameters, as shown below. Make sure your () and {} close properly.
 
@@ -237,7 +238,7 @@ Although you will not be using it in this workshop, `reverse` is another common 
   geocoder.addTo(map);
   ```
 
-2. Add `autocomplete: false` to specify that the Search box should not autocomplete as you type. Autocomplete is enabled by default, so adding this means that you will turn it off.
+2. Add `autocomplete: false` to specify that the Search box should not suggest potential text matches as you type. Autocomplete is enabled by default, so adding this means that you will turn it off.
 
   ```js
   var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
@@ -248,84 +249,89 @@ Although you will not be using it in this workshop, `reverse` is another common 
 
 3. Save your edits and refresh the browser.
 4. Type `901 12th Avenue` in the Search box and press Enter. Notice now that the matching search results are not listed until you press the Enter key.
-5. Return to your code and change the value of `autocomplete` to `true` so the matching results will again appear as you type, and refresh the browser.
 
-## Prioritize results around a location
-
-//TO DO: WHY DO THESE PARAMETERS WORK WITH AUTOCOMPLETE?
-
-Mapzen Search provides options for customizing your search parameters, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list. By setting a `focus` point and a search radius, you can improve the geographic relevance of the results.
-
-See the [documentation](https://mapzen.com/documentation/search/autocomplete/#available-autocomplete-parameters) for list of the available parameters for the `autocomplete` endpoint.
-
-Because Mapzen.js includes the functionality available with the Leaflet library, you can use the Leaflet `getCenter()` method to return the geographical center of your map view. The code returns an `LatLng` object with an array containing the latitude and longitude values in decimal degrees.
-
-1. On the line above the `var geocoder = L.Mapzen.geocoder('search-q78U1e7', {`, add the following code to initialize a variable to hold the coordinates at the center of the map.
-
-  ```js
-  var focusPoint = map.getCenter('map');
-  ```
-
-2. Within the geocoder block, add the `params:` list to set the focus point and a circle in which to search. The radius is set in kilometers. Be sure to add a `,` at the end of the `autocomplete: true` line. In addition, you need to enclose with single quotation marks any parameter names that use the dot notation to make sure JavaScript can parse the text correctly.
-
-  ```js
-  var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
-    autocomplete: true,
-    // Additional parameters to control the search behavior
-    params: {
-       focus: focusPoint,
-       'boundary.circle.lat': focusPoint.lat,
-       'boundary.circle.lon': focusPoint.lng,
-       'boundary.circle.radius': 5
-   	}
-  });
-  ```
-
-3. Save your edits and refresh the browser.
-4. Type `library` in the Search box and choose one of the results in the list. This time, notice that the results are restricted to facilities in Seattle.
-
-_Extra credit: Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools. The Network tab shows the Internet traffic, including the queries to the Mapzen servers. The Headers tab shows more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/autocomplete?text=library&focus.point.lat=47.610336680421604&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7&focus=LatLng(47.61033%2C%20-122.31801)&boundary.circle.lat=47.61033&boundary.circle.lon=-122.31801&boundary.circle.radius=5` You can use this URL in a new browser tab to see the JSON response, or even map it. The website, geojson.io, allows you to copy and paste the JSON onto the page and search see the results on a map._
-
-The code you added in this section should look something like this.
-
-```js
-var focusPoint = map.getCenter('map');
-var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
-  autocomplete: true,
-  params: {
-       focus: focusPoint,
-       'boundary.circle.lat': focusPoint.lat,
-       'boundary.circle.lon': focusPoint.lng,
-       'boundary.circle.radius': 5
-    }
-});
-geocoder.addTo(map);
-```
+_Extra credit: Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools. The Network tab shows the Internet traffic, including the queries to the Mapzen servers. The Headers tab shows more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7` You can use this URL in a new browser tab to see the JSON response, or even map it. The website, geojson.io, allows you to copy and paste the JSON onto the page and search see the results on a map._
 
 ## Choose which data sources to search
 
 Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets.
 
-You can choose which data sources to search by passing a parameter for the `sources`.
+You can choose which data sources to search by passing a parameter for the `sources`. In addition, you need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
 
-1. Add `sources: 'osm'` to the list of `params:`. Be sure to add a `,` to the end of the line above it.
+As you were searching for `901 12th Avenue`, you might have noticed results that looked similar. Mapzen Search does perform some elimination, but the differing data sources may still cause seemingly matching results to appear. Choosing a particular data source can reduce the occurrence of duplicated entries.
+
+1. Within the geocoder block, add the `params:` list and a parameter for `sources:`. Be sure to add a `,` at the end of the `autocomplete: false` line.
 
   ```js
   var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
-    autocomplete: true,
+    autocomplete: false,
     params: {
-       focus: focusPoint,
-       'boundary.circle.lat': focusPoint.lat,
-       'boundary.circle.lon': focusPoint.lng,
-       'boundary.circle.radius': 5,
-       sources: 'osm'
-     }
-   });
-   geocoder.addTo(map);
-   ```
+      sources: 'osm'
+    }
+  });
+  geocoder.addTo(map);
+  ```
 
 2. Save your edits and refresh the browser.
-3. Continue to search the map and experiment with the geocoder.
+3. Search for `901 12th Avenue` again, and continue to search the map and experiment with the geocoder.
+
+## Prioritize results around a location
+
+Mapzen Search provides options for customizing your search parameters, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list.
+
+Mapzen.js automatically provides a focus point for you based on the current map view extent. You can add other parameters to filter the search results, such as to limit the results to a particular country or type of result.
+
+1. Within the geocoder block, add add a `,` at the end of the `sources: 'osm'` line and then a parameter for `'boundary.country': 'USA'` on the next line. You need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
+
+  ```js
+  var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+    autocomplete: false,
+    params: {
+      sources: 'osm',
+      'boundary.country': 'USA'
+    }
+  });
+  geocoder.addTo(map);
+  ```
+
+3. Save your edits and refresh the browser.
+4. Type `library` in the Search box. Notice that you only see results from within the United States.
+5. Optionally, trying changing the `boundary.country` to another country code, such as `AUS` for Australia. There is a [specific format](https://en.wikipedia.org/wiki/ISO_3166-1) you need to use for the country code. Change the code back to `USA` when you are done.
+
+The code you added in this section should look something like this.
+
+```js
+var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+  autocomplete: false,
+  params: {
+    sources: 'osm',
+    'boundary.country': 'USA'
+  }
+});
+geocoder.addTo(map);
+```
+
+## Filter the results by type of place
+
+In Mapzen Search, types of places are referred to as `layers`, and you can use these to filter your results. For example, if your app has an input form where your users should only be able to enter a city, you can use Mapzen Search to limit the results to show only matching city names. This is common in travel apps, such as searching for a hotel or flight, where you enter a destination city. In this section, you will filter the results to search only addresses.
+
+You can review the [Mapzen Search documentation](https://mapzen.com/documentation/search/search/#filter-by-data-type) to learn the types of `layers` you can use in a search.
+
+1. Within the geocoder block, add add a `,` at the end of the `'boundary.country: 'USA'` line and then a parameter for `layers: 'address'` on the next line.
+
+  ```js
+  var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+    autocomplete: false,
+    params: {
+      sources: 'osm',
+      'boundary.country': 'USA',
+      layers: 'address'
+    }
+  });
+  geocoder.addTo(map);
+  ```
+2. Save your edits and refresh the browser.
+3. Search for `102 Pike Street` (the first Starbucks) and press Enter. Some other addresses you can try include `400 Broad Street` (the Space Needle), `7277 Perimeter Road South` (Boeing Field airport).
 
 ## Workshop summary
 
@@ -367,23 +373,15 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
         scene: L.Mapzen.HouseStyles.BubbleWrap
       });
 
-      // Use the center of the map as the focusPoint (updates when panning)
-      // getCenter returns a latLng object with properties of lat, lng
-      var focusPoint = map.getCenter('map');
-
       // Add the Search box to the map
       var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
-        autocomplete: true,
+        // Turn off autocomplete text searching
+        autocomplete: false,
+        // Add parameters to filter the results
         params: {
-             focus: focusPoint,
-             // Get the lat, lon from the focus point
-             'boundary.circle.lat': focusPoint.lat,
-             'boundary.circle.lon': focusPoint.lng,
-             // Set a radius to search around the point, in km
-             'boundary.circle.radius': 5,
-             // Use only OpenStreetMap as the data source
-              sources: 'osm'
-         	}
+          sources: 'osm',
+          'boundary.country': 'USA'
+        }
       });
       geocoder.addTo(map);
     </script>

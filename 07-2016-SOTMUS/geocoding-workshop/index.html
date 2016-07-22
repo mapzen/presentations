@@ -27,25 +27,16 @@
         scene: L.Mapzen.HouseStyles.BubbleWrap
       });
 
-      // Use the center of the map as the focusPoint (updates when panning)
-      // getCenter returns a latLng object with properties of lat, lng
-      var focusPoint = map.getCenter('map');
 
-      // Add the Search box to the map
       var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
-        autocomplete: true,
+        autocomplete: false,
         params: {
-             focus: focusPoint,
-        //     // Get the lat, lon from the focus point
-             'boundary.circle.lat': focusPoint.lat,
-             'boundary.circle.lon': focusPoint.lng,
-        //     // Set a radius to search around the point, in km
-             'boundary.circle.radius': 5,
-        //     // Use only OpenStreetMap as the data source
-              sources: 'osm'
-         	}
+          sources: 'osm',
+          'boundary.country': 'USA'
+        }
       });
       geocoder.addTo(map);
+
     </script>
   </body>
 </html>
