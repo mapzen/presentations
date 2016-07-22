@@ -27,12 +27,13 @@
         scene: L.Mapzen.HouseStyles.BubbleWrap
       });
 
-
+      // Add the geocoder to the map
       var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
         autocomplete: false,
         params: {
           sources: 'osm',
-          'boundary.country': 'USA'
+          'boundary.country': 'USA',
+          layers: 'venue,address'
         }
       });
       geocoder.addTo(map);

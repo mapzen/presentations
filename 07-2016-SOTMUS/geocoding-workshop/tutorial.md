@@ -313,11 +313,11 @@ geocoder.addTo(map);
 
 ## Filter the results by type of place
 
-In Mapzen Search, types of places are referred to as `layers`, and you can use these to filter your results. For example, if your app has an input form where your users should only be able to enter a city, you can use Mapzen Search to limit the results to show only matching city names. This is common in travel apps, such as searching for a hotel or flight, where you enter a destination city. In this section, you will filter the results to search only addresses.
+In Mapzen Search, types of places are referred to as `layers`, and you can use these to filter your results. For example, if your app has an input form where your users should only be able to enter a city, you can use Mapzen Search to limit the results to show only matching city names. This is common in travel apps, such as searching for a hotel or flight, where you enter a destination city. In this section, you will filter the results to search only addresses and venues, which include point of interest, landmarks, and businesses.
 
 You can review the [Mapzen Search documentation](https://mapzen.com/documentation/search/search/#filter-by-data-type) to learn the types of `layers` you can use in a search.
 
-1. Within the geocoder block, add add a `,` at the end of the `'boundary.country: 'USA'` line and then a parameter for `layers: 'address'` on the next line.
+1. Within the geocoder block, add add a `,` at the end of the `'boundary.country: 'USA'` line and then a parameter for `layers: 'address,venue'` on the next line.
 
   ```js
   var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
@@ -325,13 +325,13 @@ You can review the [Mapzen Search documentation](https://mapzen.com/documentatio
     params: {
       sources: 'osm',
       'boundary.country': 'USA',
-      layers: 'address'
+      layers: 'address,venue'
     }
   });
   geocoder.addTo(map);
   ```
 2. Save your edits and refresh the browser.
-3. Search for `102 Pike Street` (the first Starbucks) and press Enter. Some other addresses you can try include `400 Broad Street` (the Space Needle), `7277 Perimeter Road South` (Boeing Field airport).
+3. Search for `102 Pike Street` (the first Starbucks) and press Enter. Some other places you can try include `400 Broad Street` (the address of the Space Needle), `Space Needle`, and `University of Washington`. 
 
 ## Workshop summary
 
@@ -373,17 +373,17 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
         scene: L.Mapzen.HouseStyles.BubbleWrap
       });
 
-      // Add the Search box to the map
+      // Add the geocoder to the map
       var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
-        // Turn off autocomplete text searching
         autocomplete: false,
-        // Add parameters to filter the results
         params: {
           sources: 'osm',
-          'boundary.country': 'USA'
+          'boundary.country': 'USA',
+          layers: 'venue,address'
         }
       });
       geocoder.addTo(map);
+
     </script>
   </body>
 </html>
