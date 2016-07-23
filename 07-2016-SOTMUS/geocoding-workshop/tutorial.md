@@ -331,7 +331,7 @@ You can review the [Mapzen Search documentation](https://mapzen.com/documentatio
   geocoder.addTo(map);
   ```
 2. Save your edits and refresh the browser.
-3. Search for `102 Pike Street` (the first Starbucks) and press Enter. Some other places you can try include `400 Broad Street` (the address of the Space Needle), `Space Needle`, and `University of Washington`. 
+3. Search for `102 Pike Street` (the first Starbucks) and press Enter. Some other places you can try include `400 Broad Street` (the address of the Space Needle), `Space Needle`, and `University of Washington`.
 
 ## Workshop summary
 
@@ -341,7 +341,7 @@ To use Mapzen Search in the future, sign up for your own API key. Because the se
 
 ## Completed HTML for the workshop
 
-You can refer to this HTML if you want to review your work or troubleshoot an error. You will need to substitute your own API key for the placeholder text in the source code.
+You can refer to this HTML if you want to review your work or troubleshoot an error. 
 
 ```html
 <!DOCTYPE html>
