@@ -168,7 +168,7 @@ Your index.html should look something like this:
 
 At this point, you have a map! You should see a map, zoom controls, and attribution in the bottom corner.
 
-![Leaflet canvas map with controls and attribution](images/geocoder-osm-leaflet.png)
+![Leaflet canvas map with controls and attribution](images/basic-webmap.png)
 
 ## Add the Search box
 
@@ -341,7 +341,7 @@ To use Mapzen Search in the future, sign up for your own API key. Because the se
 
 ## Completed HTML for the workshop
 
-You can refer to this HTML if you want to review your work or troubleshoot an error. 
+You can refer to this HTML if you want to review your work or troubleshoot an error.
 
 ```html
 <!DOCTYPE html>
