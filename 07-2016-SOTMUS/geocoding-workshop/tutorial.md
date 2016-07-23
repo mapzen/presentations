@@ -174,7 +174,7 @@ At this point, you have a map! You should see a map, zoom controls, and attribut
 
 So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box.
 
-1. Inside the same `<script>` tag, initialize a search box and add it to the map with the following code.
+1. Inside the same `<script>` tag, and after the code you just added for the map, initialize a search box and add it to the map with the following code.
 
     ```js
     var geocoder = L.Mapzen.geocoder('search-q78U1e7');
@@ -192,19 +192,16 @@ Your `<body>` section should look like this:
 ```html
 [...]
 <script>
-  // Add a map to the #map div
-  // Center on the Pigott building at Seattle University:
+
   var map = L.Mapzen.map('map', {
     center: [47.61033,-122.31801],
     zoom: 16,
     scene: L.Mapzen.HouseStyles.BubbleWrap
   });
 
-  // Add the Search box to the map
   var geocoder = L.Mapzen.geocoder('search-q78U1e7');
   geocoder.addTo(map);
 </script>
-</body>
 [...]
 ```
 
@@ -252,6 +249,8 @@ Although you will not be using it in this workshop, `reverse` is another common 
 
 _Extra credit: Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools. The Network tab shows the Internet traffic, including the queries to the Mapzen servers. The Headers tab shows more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7` You can use this URL in a new browser tab to see the JSON response, or even map it. The website, geojson.io, allows you to copy and paste the JSON onto the page and search see the results on a map._
 
+![Search endpoint query in the browser developer console](images/developer-console.png)
+
 ## Choose which data sources to search
 
 Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets.
@@ -273,7 +272,7 @@ As you were searching for `901 12th Avenue`, you might have noticed results that
   ```
 
 2. Save your edits and refresh the browser.
-3. Search for `901 12th Avenue` again, and continue to search the map and experiment with the geocoder.
+3. Search for `901 12th Avenue` again. Try searching city names, such as `London`, `Paris`, or `Vancouver`, as you continue to experiment with the geocoder.
 
 ## Prioritize results around a location
 
@@ -295,7 +294,7 @@ Mapzen.js automatically provides a focus point for you based on the current map 
   ```
 
 3. Save your edits and refresh the browser.
-4. Type `library` in the Search box. Notice that you only see results from within the United States.
+4. Search again for city names in the Search box. Notice that you only see results from within the United States. For example, `Vancouver` in Canada is no longer listed, but you can find the city in Washington.
 5. Optionally, trying changing the `boundary.country` to another country code, such as `AUS` for Australia. There is a [specific format](https://en.wikipedia.org/wiki/ISO_3166-1) you need to use for the country code. Change the code back to `USA` when you are done.
 
 The code you added in this section should look something like this.
@@ -331,7 +330,7 @@ You can review the [Mapzen Search documentation](https://mapzen.com/documentatio
   geocoder.addTo(map);
   ```
 2. Save your edits and refresh the browser.
-3. Search for `102 Pike Street` (the first Starbucks) and press Enter. Some other places you can try include `400 Broad Street` (the address of the Space Needle), `Space Needle`, and `University of Washington`.
+3. Search for `102 Pike Street, Seattle, WA 98101` (the first Starbucks) and press Enter. Some other places you can try include `Starbucks`, `400 Broad Street` (the address of the Space Needle), `Space Needle`, and `University of Washington`.
 
 ## Workshop summary
 
@@ -374,6 +373,7 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
       });
 
       // Add the geocoder to the map
+      // Disable autocomplete and set parameters for the search query
       var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
         autocomplete: false,
         params: {
