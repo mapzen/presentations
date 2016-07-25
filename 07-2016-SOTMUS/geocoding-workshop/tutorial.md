@@ -1,6 +1,6 @@
 # Workshop: Add the Mapzen Search geocoder to an interactive map
 
-[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and open data. Use this functionality to enhance any app that has a geographic context, such as ones that help in delivering goods, locating hotels or venues, or providing local weather forecasts.
+[Mapzen Search](https://mapzen.com/products/search/) is a modern, geographic search service based entirely on open-source tools and open data. Use this functionality to enhance any app that has a geographic context, such as ones that help in delivering goods, locating hotels or venues, or providing local weather forecasts.
 
 Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Mapzen Search allows you to enter an address or the name of a landmark or business, and the service translates the result into geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
 
@@ -227,7 +227,7 @@ Up to this point, you have been using the Mapzen Search [\autocomplete](https://
 
 If you look at your browser's developer tools console as you are doing this, you can see the query URL changes from `https://search.mapzen.com/v1/autocomplete?text=` to `https://search.mapzen.com/v1/search?text=` to reflect the `search` endpoint.
 
-Although you will not be using it in this workshop, `reverse` is another common Mapzen Search endpoint. It performs reverse geocoding to find the address at a given coordinate location. You can find a listing of all the endpoints and parameters in the [Mapzen Search documentation](https://mapzen.com/documentation/search/).
+Although you will not be using it in this workshop, [\reverse](https://mapzen.com/documentation/search/reverse/) is another common Mapzen Search endpoint. It performs reverse geocoding to find the address at a given coordinate location. You can find a listing of all the endpoints and parameters in the [Mapzen Search documentation](https://mapzen.com/documentation/search/).
 
 1. Modify the geocoder code block so you can pass in other parameters, as shown below. Make sure your () and {} close properly.
 
