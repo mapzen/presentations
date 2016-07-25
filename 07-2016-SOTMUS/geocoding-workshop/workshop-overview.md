@@ -2,6 +2,8 @@
 
 Facilitators: Rhonda Glennon, Katie Kowalsky, Diana Shkolnikov - [Mapzen](https://mapzen.com/)
 
+The tutorial instructions are here: https://git.io/vK9Jp
+
 ## Agenda
 
 - Welcome and introductions
@@ -45,6 +47,6 @@ Geocoding turns addresses and place names into geographic coordinates for mappin
 
 Follow along with the group, or work ahead on your own.
 
-The tutorial instructions are here: https://git.io/vKyZf
+The tutorial instructions are here: https://git.io/vK9Jp
 
 You can find the rest of Mapzen's documentation at https://mapzen.com/documentation
