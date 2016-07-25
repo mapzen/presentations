@@ -4,15 +4,17 @@
 
 Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Mapzen Search allows you to enter an address or the name of a landmark or business, and the service translates the result into geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
 
+## Get ready for the workshop
+
 In this workshop, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You can use any text editor and operating system, but must keep an Internet connection while you are working.
-
-## Create an index page
-
-You are ready to start building your map. You will need to use a text editor to update the HTML.
 
 Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/); [Notepad++ - Windows](https://notepad-plus-plus.org/); [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/); and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
-The end of the page has a finished version of the HTML that you can use to check your work or review if you need to troubleshoot an error.
+## Create an HTML page
+
+You are ready to start building your web page and map.
+
+_Tip: The end of this page has a finished version of the code that you can use to check your work or review if you need to troubleshoot an error._
 
 1. Start your text editor with a blank document and copy and paste the following HTML. (Note: If the text editor you are using requires you to name and save a document at the time when it is first created, call the file `index.html`.)
 
@@ -56,13 +58,13 @@ Your HTML should look like this:
 
 ## Add references to CSS and JavaScript files
 
-The Leaflet JavaScript library provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps.
+A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your `index.html` file, you need to list the CSS and JavaScript files needed to build your page.
 
-Mapzen has packaged Leaflet into a library called Mapzen.js. It contains all the Leaflet functionality, as well as additional tools for working with Mapzen maps and search. Mapzen.js simplifies the process of using Mapzen's maps within Leaflet.
+The [Leaflet JavaScript library](http://leafletjs.com/) provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps.
 
-A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your `index.html` file, you need to list the CSS and JavaScript files.
+The [Mapzen.js library](https://www.mapzen.com/documentation/mapzen-js/) simplifies the process of using Mapzen's maps within Leaflet. Mapzen.js contains all the Leaflet functionality, as well as additional tools for working with Mapzen maps and search.
 
-1. In `index.html`, at the bottom of the `<head>` section, add references to the Mapzen.js CSS and JavaScript files. You are linking to these from a remote website, rather than from a file on your machine.
+1. In `index.html`, at the bottom of the `<head>` section, add references to the Mapzen.js CSS and JavaScript files.
 
     ```html
     <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
@@ -124,7 +126,9 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
     </script>
     ```
 
-    `L.xxxxx` is a convention used with the Leaflet API. The `center: [47.61033,-122.31801]` parameter sets the center point of the map, in decimal degrees, at the location of this building at Seattle University. The next line sets the zoom level, which is like a map scale or resolution, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+    `L.xxxxx` is a convention used with the Leaflet API. The `center: [47.61033,-122.31801]` parameter sets the center point of the map, in decimal degrees, at the location of this building at Seattle University.
+
+    The next line sets the `zoom` level, which is like a map scale or resolution, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
 
     The `scene: L.Mapzen.HouseStyles.BubbleWrap` line sets the style used for the map. In this case, it is Mapzen's all-purpose stylesheet called BubbleWrap.
 
@@ -154,8 +158,6 @@ Your index.html should look something like this:
   <body>
     <div id="map"></div>
     <script>
-      // Add a map to the #map div
-      // Center on the Pigott building at Seattle University:
       var map = L.Mapzen.map('map', {
         center: [47.61033,-122.31801],
         zoom: 16,
@@ -181,9 +183,9 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
     geocoder.addTo(map);
     ```
 
-    You are passing one parameter to the search, which is the [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key) inside the single quotes. For this workshop, you are being provided with an API key. Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone.
+    You are passing one parameter to the search, which is the [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key) inside the single quotes. The API key is a code that uniquely identifies your developer account without providing a password. For this workshop, you are being provided with an API key. Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone.
 
-2. Save your edits and refresh the browser. You should see search box in the left corner, near the zoom controls.
+2. Save your edits and refresh the browser. You should see search box in the left corner, near the zoom controls. If your browser window is wide, the Search box is expanded by default. When you reduce the window size, the box collapses to a button. You can change this behavior in the geocoder options.
 
     ![Search icon on the map canvas](images/geocoder-search-icon.png)
 
@@ -217,11 +219,11 @@ Now, you will test your search box by finding a few locations. As you type, the 
 
 ## Customize the geocoder
 
+From a technical perspective, Mapzen Search is a web service with that has various API endpoints that allow you to access web resources through a URL. Behind the scenes, the geocoder is constructing a URL with the parameters you specify and sending it to the Mapzen Search web service. The service returns [human-readable JSON](https://en.wikipedia.org/wiki/JSON), short for JavaScript Object Notation.
+
 Mapzen.js provides options for customizing the way you interact with the map, and Mapzen Search is also very flexible. Now that you have a map on your page with a Search box, you can add more features to it. You need to modify the line defining the geocoder to include additional parameters.
 
-Mapzen Search is a web service with that has various API endpoints that allow you to access web resources through a URL. Behind the scenes, the geocoder is constructing a URL with the parameters you specify and sending it to the Mapzen Search web service. The service returns human-readable JSON, or JavaScript Object Notation.
-
-Up to this point, you have been using the Mapzen Search `autocomplete` endpoint, which searches on text as you type it. In this section, you will switch to the `search` endpoint to see how it behaves. The `autocomplete` functionality helps you find partial matches, whereas `search` prioritizes exact words because it assumes you have finished typing when you perform the query.
+Up to this point, you have been using the Mapzen Search [\autocomplete](https://mapzen.com/documentation/search/autocomplete/) endpoint, which searches on text as you type it. In this section, you will switch to the [\search](https://mapzen.com/documentation/search/search/) endpoint to see how it behaves. The `autocomplete` functionality helps you find partial matches, whereas `search` prioritizes exact words because it assumes you have finished typing when you perform the query.
 
 If you look at your browser's developer tools console as you are doing this, you can see the query URL changes from `https://search.mapzen.com/v1/autocomplete?text=` to `https://search.mapzen.com/v1/search?text=` to reflect the `search` endpoint.
 
@@ -247,7 +249,7 @@ Although you will not be using it in this workshop, `reverse` is another common 
 3. Save your edits and refresh the browser.
 4. Type `901 12th Avenue` in the Search box and press Enter. Notice now that the matching search results are not listed until you press the Enter key.
 
-_Extra credit: Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools. The Network tab shows the Internet traffic, including the queries to the Mapzen servers. The Headers tab shows more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7` You can use this URL in a new browser tab to see the JSON response, or even map it. The website, geojson.io, allows you to copy and paste the JSON onto the page and search see the results on a map._
+_Extra credit: Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools. The Network tab shows the Internet traffic, including the queries to the Mapzen servers. The Headers tab shows more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7` You can use this URL in a new browser tab to see the JSON response, which can be mapped._
 
 ![Search endpoint query in the browser developer console](images/developer-console.png)
 
@@ -272,7 +274,7 @@ As you were searching for `901 12th Avenue`, you might have noticed results that
   ```
 
 2. Save your edits and refresh the browser.
-3. Search for `901 12th Avenue` again. Try searching city names, such as `London`, `Paris`, or `Vancouver`, as you continue to experiment with the geocoder.
+3. Search for `901 12th Avenue` again. Try searching city names, such as `Vancouver`, as you continue to experiment with the geocoder.
 
 ## Prioritize results around a location
 
