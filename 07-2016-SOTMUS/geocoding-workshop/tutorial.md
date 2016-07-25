@@ -249,7 +249,14 @@ Although you will not be using it in this workshop, `reverse` is another common 
 3. Save your edits and refresh the browser.
 4. Type `901 12th Avenue` in the Search box and press Enter. Notice now that the matching search results are not listed until you press the Enter key.
 
-_Extra credit: Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools. The Network tab shows the Internet traffic, including the queries to the Mapzen servers. The Headers tab shows more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7` You can use this URL in a new browser tab to see the JSON response, which can be mapped._
+### Extra credit: View the JSON response
+
+1. Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools.
+2. Click the Network tab to see the Internet traffic, including the queries to the Mapzen servers.
+3. Click the Headers tab for more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7`
+4. Paste this URL into a new browser tab to see the JSON response, which can be mapped.
+
+_Tip: You can install a plug-in for your browser to display JSON in a more formatted manner. For example, JSONView is a common extension that does this for Chrome. You can search the web store for your browser to find and install applicable products ._
 
 ![Search endpoint query in the browser developer console](images/developer-console.png)
 
@@ -259,7 +266,7 @@ Mapzen Search uses a [variety of open data sources](https://mapzen.com/documenta
 
 You can choose which data sources to search by passing a parameter for the `sources`. In addition, you need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
 
-As you were searching for `901 12th Avenue`, you might have noticed results that looked similar. Mapzen Search does perform some elimination, but the differing data sources may still cause seemingly matching results to appear. Choosing a particular data source can reduce the occurrence of duplicated entries.
+As you were searching, you might have noticed results that looked similar. Mapzen Search does perform some elimination, but the differing data sources may still cause seemingly matching results to appear. Choosing a particular data source can reduce the occurrence of duplicated entries.
 
 1. Within the geocoder block, add the `params:` list and a parameter for `sources:`. Be sure to add a `,` at the end of the `autocomplete: false` line.
 
@@ -276,11 +283,11 @@ As you were searching for `901 12th Avenue`, you might have noticed results that
 2. Save your edits and refresh the browser.
 3. Search for `901 12th Avenue` again. Try searching city names, such as `Vancouver`, as you continue to experiment with the geocoder.
 
-## Prioritize results around a location
+## Prioritize nearby places and filter search results
 
 Mapzen Search provides options for customizing your search parameters, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list.
 
-Mapzen.js automatically provides a focus point for you based on the current map view extent. You can add other parameters to filter the search results, such as to limit the results to a particular country or type of result.
+Mapzen.js automatically provides a [focus point](https://mapzen.com/documentation/search/search/#prioritize-around-a-point) for you based on the current map view extent. You can add other parameters to filter the search results, such as to limit the results to a particular country or type of result.
 
 1. Within the geocoder block, add add a `,` at the end of the `sources: 'osm'` line and then a parameter for `'boundary.country': 'USA'` on the next line. You need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
 
@@ -314,7 +321,9 @@ geocoder.addTo(map);
 
 ## Filter the results by type of place
 
-In Mapzen Search, types of places are referred to as `layers`, and you can use these to filter your results. For example, if your app has an input form where your users should only be able to enter a city, you can use Mapzen Search to limit the results to show only matching city names. This is common in travel apps, such as searching for a hotel or flight, where you enter a destination city. In this section, you will filter the results to search only addresses and venues, which include point of interest, landmarks, and businesses.
+In Mapzen Search, types of places are referred to as `layers`, and you can use these to filter your results. For example, if your app has an input form where your users should only be able to enter a city, you can use Mapzen Search to limit the results to show only matching city names. This is common in travel apps, such as searching for a hotel or flight, where you enter a destination city.
+
+In this section, you will filter the results to search only addresses and venues, which include point of interest, landmarks, and businesses.
 
 You can review the [Mapzen Search documentation](https://mapzen.com/documentation/search/search/#filter-by-data-type) to learn the types of `layers` you can use in a search.
 
@@ -336,11 +345,13 @@ You can review the [Mapzen Search documentation](https://mapzen.com/documentatio
 
 ## Workshop summary
 
-In this workshop, you learned the basics of adding the Mapzen Search geocoding engine to a map using Mapzen.js, and making some customizations to improve the search results. If you want to learn more about Mapzen Search, review the [documentation](https://mapzen.com/documentation/search).
+In this workshop, you learned the basics of adding the Mapzen Search geocoding engine to a map using [Mapzen.js](https://mapzen.com/documentation/mapzen-js/), and making some customizations to improve the search results.
 
-To use Mapzen Search in the future, sign up for your own API key. Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. Sign in at https://mapzen.com/developers to create and manage your API keys.
+To use Mapzen Search in the future, sign up for your own API key. Sign in at https://mapzen.com/developers to create and manage your API keys.
 
-## Completed HTML for the workshop
+If you want to learn more about Mapzen Search, review the [documentation](https://mapzen.com/documentation/search).
+
+## Completed code for the workshop
 
 You can refer to this HTML if you want to review your work or troubleshoot an error.
 
