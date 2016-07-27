@@ -5,7 +5,7 @@
 3. (Live demo) This is how it works.You can search for the location using search box on left top. After the location and the zooml leve are selected,, you can preview the file. In case the result is not exactly what you expected, you canv navigate the area in nine directions . Tile exporter generates obj file, the file is available for download through the link on the left side.
 4. This is the result when I printed downloaded file with Makerbot.
 5. There are several nice prints from Shapeway. They look really nice with metal materials.
-6.
+6. (another example print)
 7. This is a fun thing that you can do with tile exporter, if you set zoom level high, you get al-most building itself.
 8. In this way I could get al-most empire state building. I had this very specific image in my mind , sipping whiskey with empire state building shaped ice on the  rocks
 9. so I put the print in a plastic cup and poured the silicon in it.
@@ -19,4 +19,18 @@
 17. (Colorful version of Axidraw video)  Vector tile separates different features into its layers, so you can do fun things like giving color to each layer. Actually, Mapzen brought Axidraw to here SOTMUS so you can check it out at Mapzen booth.
 18. If you got interested in making something woth vector tiles, you should check out my coworker Karim and Rachel’s projects too. This is way too short talk to talk about how awesome they are.
 19. Map has been inspiration for many people’s creativity. and I believe vector tile can inspire even more people in digital fabrication area. I am looking forward to what will come more in near future
-20.Thank you ! Here is my Twitter handle, please let me or mapzen know what you are making!
+20. Thank you ! Here is my Twitter handle (@hanbyul_here), please let me or mapzen know what you are making!
+
+### Links
+
+3D Tile Exporter: https://hanbyul-here.github.io/tile-exporter/
+3D Tile Exporter repo: https://github.com/hanbyul-here/tile-exporter
+
+Vectiler: https://github.com/karimnaaji/vectiler
+SVG Exporter: https://github.com/mapzen/svg-export
+
+### Contact
+
+Hanbyul Jo
+e-mail: hanbyul@mapzen.com
+twitter: @hanbyul_here
