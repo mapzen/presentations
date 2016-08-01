@@ -16,7 +16,7 @@ Mapping fine-grained details in OpenStreetMap is challenging because open data n
 - Tangram prototype with Philly data (demo) - http://tangrams.github.io/curblines/ (Warning: this loads slowly)
 - Tangram prototype with Philly data (code) - https://github.com/tangrams/curblines/
 - The Space Between - meta repo / wiki - https://github.com/mapzen/the-space-between/
-- The Space Between - Curb edges data sources - http://bit.ly/curblines/
+- The Space Between - Curb edges data sources - http://bit.ly/curblines
 
 ### Contact
 
