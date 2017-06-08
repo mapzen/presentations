@@ -50,7 +50,7 @@ In this exercise, you experimented with the map styles using Tangram Play to cus
 
 While the data layers were already added and styled for you, you now have an introduction to how you could make a map showing the routes and stops that are important to you.
 
-### Use Mobility Explorer to build queries for your custom maps
+### Reference: Use Mobility Explorer to build queries for your custom maps
 
 [Mobility Explorer](https://mapzen.com/mobility/explorer) highlights the connections between transit datasets, including among different transportation modes and operators. Search for a place or browse the map, and use the buttons to ask questions about fixed-route transit options in the area. For example, you can find a transit stop and see all the routes, available modes of transit, and transit agencies or operators that serve it. You can combine this information with Mapzen Mobility tools to see the area served by the stop to find out where you can travel from it within a certain amount of time.
 
