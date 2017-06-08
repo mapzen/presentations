@@ -58,7 +58,10 @@ Each time you click buttons or navigate the map on Mobility Explorer, you are se
 
 1. In your browser, go to https://mapzen.com/mobility/explorer/. Mobility Explorer opens to a default location, with a map on the right and a sidebar on the left where you can visualize and analyze transit data.
 2. In the search box on the map, type an address, city name, or other location you want to explore. The search box uses [Mapzen Search](https://mapzen.com/products/search/), Mapzen's open-source geocoder, and the text automatically completes as you type. When you press Enter, the map extent updates and adds a pin near that location. You may need to zoom in to your area of interest.
-3. On the left, under `Visualize public transit networks`, click the buttons to build queries about transit routes, stops, and operators. [You can review the Mobility Explorer documentation](https://mapzen.com/documentation/mobility/explorer/explore-transit/) to learn what you can do.
+3. On the left, under `Visualize public transit networks`, click the buttons to build queries about transit routes, stops, and operators. You can review the [Mobility Explorer documentation](https://mapzen.com/documentation/mobility/explorer/explore-transit/) to learn what you can do.
 4. When you have the query you want, on the sidebar, at the end of the section, click `See these results in GeoJSON format`.
+
+  ![GeoJSON API request link](images/mobility-explorer-geojson-link.png)
+
 5. Copy the URL for the request from the address bar in your browser. For example, the API query for the GeoJSON for routes operated by Bay Area Rapid Transit is https://transit.land/api/v1/routes.geojson?&operated_by=o-9q9-bart.
 6. In your Tangram Play map, paste the URL in the `sources` section and follow the syntax for styling the map, using the existing YAML as a guide.
