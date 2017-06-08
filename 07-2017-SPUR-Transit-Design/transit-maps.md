@@ -15,10 +15,13 @@ With Tangram Play, you can write and edit map styles and preview the changes liv
 In this exercise, you will open a map in Tangram Play with route lines and a transit stop near SPUR.
 
 1. Copy `goo.gl/9immhW` and paste it into the address bar of a new browser tab. This is a shortened link to a Tangram Play map, which opens to display a basemap with several transit-related layers.
+
   ![Transit map in Tangram Play](images/overview-map.png)
 2. Click `Inspect` on the toolbar at the top to enable a mode where you can get attributes about the features you click.
+
   ![Inspect mode in Tangram Play](images/mobility-explorer-tangram-play-inspect.png)
 3. Hover over features on the map, and click the point line to see details about it in a pop-up. If you scroll through the list, you see the properties from the Transitland entity.
+
   ![Inspect mode in Tangram Play](images/inspect-stop.png)
 4. Click `Inspect` again to turn off this mode.
 
@@ -33,6 +36,7 @@ Under `layers`, notice that there are style rules specified for the data. If you
 _Tip: The underscore in front of `_stopSPUR` and `_routesSPUR` is a Tangram best practice to indicate that the name is a user-generated variable, compared to syntax required by Tangram._
 
 1. Under `layers`, in the `stopsSPUR` block, click the square to change the `color`. You can open a color picker, or use any of the other [ways of specifying a color](https://mapzen.com/documentation/tangram/draw/#color).
+
   ![Color picker in Tangram Play](images/stops-color-picker.png)
 2. For the `size`, type a new size (in pixels) for the point on the map.
 3. Under `layers`, in the `routesSPUR` block, change the `color` and `width` using the same method.
