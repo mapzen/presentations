@@ -1,6 +1,6 @@
 # Make your own transit map with Tangram Play
 
-Maps of the transit routes exist for San Francisco, but these show the entire transit system. What if you are only interested in the bus stops and routes near SPUR? You can make your own map by choosing the data you want to show.
+Maps of transit routes exist for San Francisco, but these show the entire transit system. What if you are only interested in the bus stops and routes near SPUR? You can make your own map by choosing the data you want to show.
 
 In this exercise, you will be introduced to how you could make your own transit map with Tangram Play, which is an interactive text editor for making maps.
 
@@ -10,7 +10,7 @@ All you need is a browser and an internet connection while you are working. No s
 
 You will open a map in Tangram Play with route lines and a transit stop near SPUR. With Tangram Play, you can write and edit map styles and preview the changes live in the web browser. Tangram Play has two main interface components: the map preview and the editing pane. The map preview will show any changes made by writing in the editing pane on the fly.
 
-1. Open `http://bit.ly/2rXrqfx` in a new browser tab. This is a shortened link to a Tangram Play map, which opens to display a basemap with several transit-related layers.
+1. Open http://bit.ly/2rXrqfx in a new browser tab. This is a shortened link to a Tangram Play map, which opens to display a basemap with several transit-related layers.
 
   ![Transit map in Tangram Play](images/overview-map.png)
 
